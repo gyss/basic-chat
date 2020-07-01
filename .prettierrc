@@ -8,5 +8,6 @@
   "arrowParens": "avoid",
   "insertPragma": true,
   "tabWidth": 2,
+  "requirePragma": true,
   "useTabs": false
 }
