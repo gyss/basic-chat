@@ -12,7 +12,13 @@ const container = css`
 export default function ChatView() {
   return (
     <div css={container}>
-      Chat
+      <div>
+        Messages list
+      </div>
+      <div>
+        <input type="text" name="message" placeholder="Enter message" />
+        <button>Send</button>
+      </div>
     </div>
   )
 }
