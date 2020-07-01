@@ -9,16 +9,10 @@ const container = css`
   flex: 1;
 `
 
-interface IProps {
-  children: React.ReactNode
-}
-
-export default function Layout({children}: IProps) {
+export default function SettingsView() {
   return (
     <div css={container}>
-      <nav>Navigation</nav>
-      <div>{children}</div>
-      <footer>footer</footer>
+      Settings
     </div>
   )
 }
