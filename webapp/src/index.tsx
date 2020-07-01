@@ -6,6 +6,7 @@ import * as io from 'socket.io-client'
 import {css, Global, jsx} from '@emotion/core'
 
 import Layout from './components/Layout'
+import ErrorBoundary from './components/ErrorBoundary'
 
 require('file-loader?name=[name].[ext]!./index.html')
 
@@ -29,8 +30,10 @@ const globalStyles = css`
 function Main() {
   return (
     <React.Fragment>
+      <ErrorBoundary>
       <Global styles={globalStyles} />
       <Layout>BODY</Layout>
+      </ErrorBoundary>
     </React.Fragment>
   )
 }
