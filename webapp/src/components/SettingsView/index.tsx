@@ -12,12 +12,10 @@ const container = css`
   flex-direction: column;
   height: calc(100vh - 53px);
 
-/*
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-*/
+  @media (min-width: 700px) {
+    max-width: 700px;
+    margin: 0 auto;
+  }
 `
 
 const settingsBox = css`
@@ -27,7 +25,7 @@ const settingsBox = css`
 `
 
 const control = css`
-  margin-bottom: .75rem;
+  margin-bottom: 2rem;
   display: flex;
   flex-direction: column;
 
