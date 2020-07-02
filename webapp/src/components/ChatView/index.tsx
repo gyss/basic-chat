@@ -32,20 +32,23 @@ const footer = css`
 `
 
 export default function ChatView() {
-  const { globalState: { messages }, dispatch } = React.useContext(Context);
+  const {
+    globalState: {messages},
+    dispatch,
+  } = React.useContext(Context)
 
   return (
     <div css={container}>
       <div css={messagesBox}>
         {!messages.length ? (
-          <div><i>No messages yet</i></div>
-        ) : messages.map(message => (
-          <Message
-            key={message.id} 
-            message={message} 
-            isOwnedByUser={message.user === 'yo'}
-          />
-        ))}
+          <div>
+            <i>No messages yet</i>
+          </div>
+        ) : (
+          messages.map((message) => (
+            <Message key={message.id} message={message} isOwnedByUser={message.user === 'yo'} />
+          ))
+        )}
       </div>
       <div css={footer}>
         <InputText name="message" placeholder="Enter message" />

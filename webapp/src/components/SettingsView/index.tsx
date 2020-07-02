@@ -31,7 +31,7 @@ const control = css`
   flex-direction: column;
 
   label {
-    margin-bottom: .75rem;
+    margin-bottom: 0.75rem;
     font-size: 1.125rem;
   }
 `
@@ -42,12 +42,15 @@ const footer = css`
 `
 
 const languages = [
-  {value: "en", label: "English"},
-  {value: "es", label: "Spanish"}
+  {value: 'en', label: 'English'},
+  {value: 'es', label: 'Spanish'},
 ]
 
 export default function SettingsView() {
-  const { globalState: { settings }, dispatch } = React.useContext(Context);
+  const {
+    globalState: {settings},
+    dispatch,
+  } = React.useContext(Context)
 
   return (
     <div css={container}>
@@ -60,25 +63,33 @@ export default function SettingsView() {
         <div css={control}>
           <label htmlFor="theme">Interface color</label>
           <div>
-            <input type="radio" name="theme" value="light" checked={settings.theme === 'light'} /> Light
-            <input type="radio" name="theme" value="dark" checked={settings.theme === 'dark'} /> Dark
-          </div>
-        </div>
-        
-        <div css={control}>
-          <label htmlFor="clock">Clock display</label>
-          <div>
-            <input type="radio" name="clock" value="12" checked={settings.clock === '12'} /> 12 Hours
-            <input type="radio" name="clock" value="24" checked={settings.clock === '24'} /> 24 Hours
+            <input type="radio" name="theme" value="light" checked={settings.theme === 'light'} />{' '}
+            Light
+            <input
+              type="radio"
+              name="theme"
+              value="dark"
+              checked={settings.theme === 'dark'}
+            />{' '}
+            Dark
           </div>
         </div>
 
-        
+        <div css={control}>
+          <label htmlFor="clock">Clock display</label>
+          <div>
+            <input type="radio" name="clock" value="12" checked={settings.clock === '12'} /> 12
+            Hours
+            <input type="radio" name="clock" value="24" checked={settings.clock === '24'} /> 24
+            Hours
+          </div>
+        </div>
+
         <div css={control}>
           <label htmlFor="sendtype">Send messages on CTRL+ENTER</label>
           <div>
             <input type="radio" name="sendtype" value="on" checked={settings.sendType} /> On
-            <input type="radio" name="sendtype" value="off"checked={!settings.sendType} /> Off
+            <input type="radio" name="sendtype" value="off" checked={!settings.sendType} /> Off
           </div>
         </div>
 

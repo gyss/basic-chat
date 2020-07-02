@@ -1,21 +1,17 @@
 /** @jsx jsx */
 
-import * as React from 'react'
+import * as React from "react"
 
-import styled from '@emotion/styled'
-import {css, Global, jsx} from '@emotion/core'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
+import styled from "@emotion/styled"
+import { css, Global, jsx } from "@emotion/core"
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 
-import appReducer, {initialState} from './store/reducer'
-import Context from './store/Context'
-import ErrorBoundary from './components/ErrorBoundary'
-import ChatView from './components/ChatView'
-import SettingsView from './components/SettingsView'
-import Navigation from './components/Navigation'
+import appReducer, { initialState } from "./store/reducer"
+import Context from "./store/Context"
+import ErrorBoundary from "./components/ErrorBoundary"
+import ChatView from "./components/ChatView"
+import SettingsView from "./components/SettingsView"
+import Navigation from "./components/Navigation"
 
 const globalStyles = css`
   :root {
@@ -24,11 +20,15 @@ const globalStyles = css`
     --pink: #ffcbc9;
   }
 
-  html, body, #root {
+  html,
+  body,
+  #root {
     height: 100%;
   }
 
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     box-sizing: border-box;
   }
 
@@ -37,7 +37,6 @@ const globalStyles = css`
     font-size: 18px;
     padding: 0;
     margin: 0;
-    
   }
 `
 
@@ -47,7 +46,7 @@ const AppWrapper = styled.div`
 `
 
 export default function App() {
-  const [globalState, dispatch] = React.useReducer(appReducer, initialState);
+  const [globalState, dispatch] = React.useReducer(appReducer, initialState)
 
   return (
     <Context.Provider value={{ globalState, dispatch }}>
