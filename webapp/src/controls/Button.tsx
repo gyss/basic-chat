@@ -20,8 +20,14 @@ interface IProps {
   children: React.ReactNode
 }
 
-export default function Button({fullWidth, children}: IProps) {
+export default function Button({
+  fullWidth,
+  children,
+  ...props
+}: IProps & React.ButtonHTMLAttributes<HTMLButtonElement>) {
   return (
-    <StyledButton fullWidth={fullWidth}>{children}</StyledButton>
+    <StyledButton fullWidth={fullWidth} {...props}>
+      {children}
+    </StyledButton>
   )
 }
