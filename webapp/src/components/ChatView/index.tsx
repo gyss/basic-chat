@@ -3,7 +3,8 @@
 import * as React from 'react'
 import {css, jsx} from '@emotion/core'
 
-import Message, {IMessage} from './Message'
+import Context from '../../store/Context'
+import Message from './Message'
 import Button from '../../controls/Button'
 import InputText from '../../controls/InputText'
 
@@ -30,22 +31,15 @@ const footer = css`
   }
 `
 
-const messages:Array<IMessage> = []
-
-for (let i=0; i<20;i++) {
-  messages.push({
-    id: i,
-    user: i % 3 === 0 ? 'yo' : 'xxxxx',
-    timestamp: 1593673011,
-    text: i % 5 === 0 ? 'Super long message Super long messageSuper long messageSuper long messageSuper long messageSuper long messageSuper long message ' : 'message'
-  },)
-}
-
 export default function ChatView() {
+  const { globalState: { messages }, dispatch } = React.useContext(Context);
+
   return (
     <div css={container}>
       <div css={messagesBox}>
-        {messages.map((message) => (
+        {!messages.length ? (
+          <div><i>No messages yet</i></div>
+        ) : messages.map(message => (
           <Message
             key={message.id} 
             message={message} 

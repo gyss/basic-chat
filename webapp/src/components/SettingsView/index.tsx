@@ -3,6 +3,7 @@
 import * as React from 'react'
 import {css, jsx} from '@emotion/core'
 
+import Context from '../../store/Context'
 import Button from '../../controls/Button'
 import Select from '../../controls/Select'
 import InputText from '../../controls/InputText'
@@ -46,27 +47,29 @@ const languages = [
 ]
 
 export default function SettingsView() {
+  const { globalState: { settings }, dispatch } = React.useContext(Context);
+
   return (
     <div css={container}>
       <div css={settingsBox}>
         <div css={control}>
           <label htmlFor="username">User name</label>
-          <InputText name="username" value="" />
+          <InputText name="username" value={settings.username} />
         </div>
 
         <div css={control}>
           <label htmlFor="theme">Interface color</label>
           <div>
-            <input type="radio" name="theme" value="light" checked /> Light
-            <input type="radio" name="theme" value="dark" /> Dark
+            <input type="radio" name="theme" value="light" checked={settings.theme === 'light'} /> Light
+            <input type="radio" name="theme" value="dark" checked={settings.theme === 'dark'} /> Dark
           </div>
         </div>
         
         <div css={control}>
           <label htmlFor="clock">Clock display</label>
           <div>
-            <input type="radio" name="clock" value="12" checked /> 12 Hours
-            <input type="radio" name="clock" value="24" /> 24 Hours
+            <input type="radio" name="clock" value="12" checked={settings.clock === '12'} /> 12 Hours
+            <input type="radio" name="clock" value="24" checked={settings.clock === '24'} /> 24 Hours
           </div>
         </div>
 
@@ -74,14 +77,14 @@ export default function SettingsView() {
         <div css={control}>
           <label htmlFor="sendtype">Send messages on CTRL+ENTER</label>
           <div>
-            <input type="radio" name="sendtype" value="on" checked /> On
-            <input type="radio" name="sendtype" value="off" /> Off
+            <input type="radio" name="sendtype" value="on" checked={settings.sendType} /> On
+            <input type="radio" name="sendtype" value="off"checked={!settings.sendType} /> Off
           </div>
         </div>
 
         <div css={control}>
           <label htmlFor="language">Language</label>
-          <Select name="language" options={languages} />
+          <Select name="language" options={languages} value={settings.language} />
         </div>
       </div>
 

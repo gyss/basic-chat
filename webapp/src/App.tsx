@@ -10,6 +10,8 @@ import {
   Route,
 } from "react-router-dom";
 
+import appReducer, {initialState} from './store/reducer'
+import Context from './store/Context'
 import ErrorBoundary from './components/ErrorBoundary'
 import ChatView from './components/ChatView'
 import SettingsView from './components/SettingsView'
@@ -37,38 +39,34 @@ const globalStyles = css`
     margin: 0;
     
   }
-  /** + * {
-    margin-top: 1.5rem;
-  }*/
 `
 
 const AppWrapper = styled.div`
   background-color: var(--green);
-
   min-height: 100%;
-  /*display: flex;
-  flex-direction: column;*/
 `
 
-
 export default function App() {
-  return (
-    <ErrorBoundary>
-      <Global styles={globalStyles} />
-      <Router>
-        <AppWrapper>
-          <Navigation />
-          <Switch>
-            <Route path="/settings">
-              <SettingsView />
-            </Route>
-            <Route path="/">
-              <ChatView />
-            </Route>
-          </Switch>
-        </AppWrapper>
-      </Router>
+  const [globalState, dispatch] = React.useReducer(appReducer, initialState);
 
-    </ErrorBoundary>
+  return (
+    <Context.Provider value={{ globalState, dispatch }}>
+      <ErrorBoundary>
+        <Global styles={globalStyles} />
+        <Router>
+          <AppWrapper>
+            <Navigation />
+            <Switch>
+              <Route path="/settings">
+                <SettingsView />
+              </Route>
+              <Route path="/">
+                <ChatView />
+              </Route>
+            </Switch>
+          </AppWrapper>
+        </Router>
+      </ErrorBoundary>
+    </Context.Provider>
   )
 }
