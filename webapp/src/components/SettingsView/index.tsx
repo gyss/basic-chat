@@ -13,7 +13,7 @@ export default function SettingsView() {
   return (
     <div css={container}>
       <div>
-        <label>Username</label>
+        <label>User name</label>
         <input type="text" name="username" value="" />
       </div>
 

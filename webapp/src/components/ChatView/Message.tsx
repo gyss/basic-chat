@@ -1,7 +1,8 @@
 /** @jsx jsx */
 
 import * as React from 'react'
-import {css, jsx} from '@emotion/core'
+import {jsx} from '@emotion/core'
+import styled from '@emotion/styled'
 
 export interface IMessage {
   id: number
@@ -11,43 +12,46 @@ export interface IMessage {
 }
 
 interface IProps {
-  message: IMessage
+  message?: IMessage
+  isOwnedByUser?: boolean
 }
 
-const container = css`
-  /*margin-top: 10px;*/
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: ${(props: IProps) => props.isOwnedByUser ? 'flex-end': 'flex-start'};
+
+  > div {
+    padding: 10px;
+  }
 `
 
-const details = css`
-  padding: 10px;
-`
-
-const bubble = css`
+const Bubble = styled.div`
   position: relative;
-  display: inline-block;
   background-color: white;
   border-radius: 20px;
-  padding: 10px;
+  width: fit-content;
 
   &::after {
     content: '';
     position: absolute;
     top: -4px;
-    left: 15px;
+    ${(props: IProps) => props.isOwnedByUser ? 'right': 'left'}: 15px;
     width: 10px;
     height: 10px;
     background-color: white;
     transform: rotate(45deg);
   }
-
-  
 `
 
-export default function Message({message}: IProps) {
+export default function Message({message, isOwnedByUser}: IProps) {
   return (
-    <div css={container}>
-      <div css={details}>{message.user},{message.timestamp}</div>
-      <div css={bubble}>{message.text}</div>
-    </div>
+    <Container isOwnedByUser={isOwnedByUser}>
+      <div>
+        {!isOwnedByUser && message.user + ', '}
+        {message.timestamp}
+      </div>
+      <Bubble isOwnedByUser={isOwnedByUser}>{message.text}</Bubble>
+    </Container>
   )
 }

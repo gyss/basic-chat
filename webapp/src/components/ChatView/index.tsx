@@ -44,7 +44,7 @@ const messages:Array<IMessage> = []
 for (let i=0; i<20;i++) {
   messages.push({
     id: i,
-    user: 'xxxxx',
+    user: i % 3 === 0 ? 'yo' : 'xxxxx',
     timestamp: 1593673011,
     text: i % 5 === 0 ? 'Super long message Super long messageSuper long messageSuper long messageSuper long messageSuper long messageSuper long message ' : 'message'
   },)
@@ -54,7 +54,13 @@ export default function ChatView() {
   return (
     <div css={container}>
       <div css={messagesBox}>
-        {messages.map((message) => <Message key={message.id} message={message} />)}
+        {messages.map((message) => (
+          <Message
+            key={message.id} 
+            message={message} 
+            isOwnedByUser={message.user === 'yo'}
+          />
+        ))}
       </div>
       <div css={footer}>
         <input type="text" name="message" placeholder="Enter message" />
