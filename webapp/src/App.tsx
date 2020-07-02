@@ -1,20 +1,19 @@
 /** @jsx jsx */
 
 import * as React from 'react'
-import * as io from 'socket.io-client'
+
+import styled from '@emotion/styled'
 import {css, Global, jsx} from '@emotion/core'
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
 } from "react-router-dom";
 
 import ErrorBoundary from './components/ErrorBoundary'
 import ChatView from './components/ChatView'
 import SettingsView from './components/SettingsView'
-
-const socket = io('http://localhost:3000')
+import Navigation from './components/Navigation'
 
 const globalStyles = css`
   :root {
@@ -22,31 +21,43 @@ const globalStyles = css`
     --blue: #6559fb;
     --pink: #ffcbc9;
   }
-  body {
-    font-family: Circular, Arial, sans-serif;
-    background-color: var(--green);
-    padding: 0;
-    margin: 0;
+
+  html, body, #root {
+    height: 100%;
+  }
+
+  *, *::before, *::after {
     box-sizing: border-box;
   }
+
+  body {
+    font-family: Circular, Arial, sans-serif;
+    font-size: 18px;
+    padding: 0;
+    margin: 0;
+    
+  }
+  /** + * {
+    margin-top: 1.5rem;
+  }*/
 `
+
+const AppWrapper = styled.div`
+  background-color: var(--green);
+
+  min-height: 100%;
+  /*display: flex;
+  flex-direction: column;*/
+`
+
 
 export default function App() {
   return (
     <ErrorBoundary>
       <Global styles={globalStyles} />
       <Router>
-        <div>
-          <nav>
-            <ul>
-              <li>
-                <Link to="/">Chat</Link>
-              </li>
-              <li>
-                <Link to="/settings">Settings</Link>
-              </li>
-            </ul>
-          </nav>
+        <AppWrapper>
+          <Navigation />
           <Switch>
             <Route path="/settings">
               <SettingsView />
@@ -55,7 +66,7 @@ export default function App() {
               <ChatView />
             </Route>
           </Switch>
-        </div>
+        </AppWrapper>
       </Router>
 
     </ErrorBoundary>

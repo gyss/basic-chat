@@ -12,8 +12,6 @@ const container = css`
 export default function SettingsView() {
   return (
     <div css={container}>
-      <h2>Settings</h2>
-
       <div>
         <label>Username</label>
         <input type="text" name="username" value="" />
