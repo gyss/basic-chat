@@ -4,6 +4,7 @@ import * as React from 'react'
 import {css, jsx} from '@emotion/core'
 
 import Message, {IMessage} from './Message'
+import Button from '../../controls/Button'
 
 const container = css`
   display: flex;
@@ -27,17 +28,6 @@ const footer = css`
     margin-right: 1rem;
   }
 `
-
-const buttonStyles = css`
-  background-color: #00d1b2;
-  border-color: transparent;
-  color: #fff;
-  cursor: pointer;
-  font-size: 1.125em;
-  padding-left: 1.125em;
-  padding-right: 1.125em;
-`
-
 
 const messages:Array<IMessage> = []
 
@@ -64,7 +54,7 @@ export default function ChatView() {
       </div>
       <div css={footer}>
         <input type="text" name="message" placeholder="Enter message" />
-        <button css={buttonStyles}>Send</button>
+        <Button>Send</Button>
       </div>
     </div>
   )
