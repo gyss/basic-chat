@@ -5,6 +5,7 @@ import {css, jsx} from '@emotion/core'
 
 import Message, {IMessage} from './Message'
 import Button from '../../controls/Button'
+import InputText from '../../controls/InputText'
 
 const container = css`
   display: flex;
@@ -53,7 +54,7 @@ export default function ChatView() {
         ))}
       </div>
       <div css={footer}>
-        <input type="text" name="message" placeholder="Enter message" />
+        <InputText name="message" placeholder="Enter message" />
         <Button>Send</Button>
       </div>
     </div>

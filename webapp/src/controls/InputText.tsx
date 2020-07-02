@@ -20,6 +20,6 @@ const inputStyles = css`
 
 export default function InputText(props: React.InputHTMLAttributes<HTMLInputElement>) {
   return (
-    <input css={inputStyles} {...props} />
+    <input type="text" css={inputStyles} {...props} />
   )
 }
