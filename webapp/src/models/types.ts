@@ -1,8 +1,8 @@
 export interface ISettings {
   username: string
-  theme: 'light'|'dark'
-  clock: '12'|'24'
-  sendType: boolean,
+  theme: 'light' | 'dark'
+  clock: '12' | '24'
+  sendType: boolean
   language: string
 }
 
@@ -20,5 +20,5 @@ export interface IState {
 
 export interface IAction {
   type: string
-  payload: any
+  payload?: any
 }

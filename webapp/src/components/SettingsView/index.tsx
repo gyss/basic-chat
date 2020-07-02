@@ -3,6 +3,14 @@
 import * as React from 'react'
 import {css, jsx} from '@emotion/core'
 
+import {
+  SETTINGS_RESET,
+  SET_SETTINGS_CLOCK,
+  SET_SETTINGS_LANGUAGE,
+  SET_SETTINGS_USERNAME,
+  SET_SETTINGS_SENDTYPE,
+  SET_SETTINGS_THEME,
+} from '../../store/actionTypes'
 import Context from '../../store/Context'
 import Button from '../../controls/Button'
 import Select from '../../controls/Select'
@@ -52,24 +60,50 @@ export default function SettingsView() {
     dispatch,
   } = React.useContext(Context)
 
+  function handleChangeClock(event: React.ChangeEvent<HTMLInputElement>) {
+    dispatch({type: SET_SETTINGS_CLOCK, payload: event.target.value})
+  }
+  function handleChangeTheme(event: React.ChangeEvent<HTMLInputElement>) {
+    dispatch({type: SET_SETTINGS_THEME, payload: event.target.value})
+  }
+  function handleChangeUsername(event: React.ChangeEvent<HTMLInputElement>) {
+    dispatch({type: SET_SETTINGS_USERNAME, payload: event.target.value.replace(/[\W_]+/g, '')})
+  }
+  function handleChangeSendType(event: React.ChangeEvent<HTMLInputElement>) {
+    dispatch({type: SET_SETTINGS_SENDTYPE, payload: event.target.value === 'on'})
+  }
+  function handleSelectLanguage(event: React.ChangeEvent<HTMLSelectElement>) {
+    dispatch({type: SET_SETTINGS_LANGUAGE, payload: event.target.value})
+  }
+  function handleReset() {
+    dispatch({type: SETTINGS_RESET})
+  }
+
   return (
     <div css={container}>
       <div css={settingsBox}>
         <div css={control}>
           <label htmlFor="username">User name</label>
-          <InputText name="username" value={settings.username} />
+          <InputText name="username" value={settings.username} onChange={handleChangeUsername} />
         </div>
 
         <div css={control}>
           <label htmlFor="theme">Interface color</label>
           <div>
-            <input type="radio" name="theme" value="light" checked={settings.theme === 'light'} />{' '}
+            <input
+              type="radio"
+              name="theme"
+              value="light"
+              checked={settings.theme === 'light'}
+              onChange={handleChangeTheme}
+            />{' '}
             Light
             <input
               type="radio"
               name="theme"
               value="dark"
               checked={settings.theme === 'dark'}
+              onChange={handleChangeTheme}
             />{' '}
             Dark
           </div>
@@ -78,29 +112,57 @@ export default function SettingsView() {
         <div css={control}>
           <label htmlFor="clock">Clock display</label>
           <div>
-            <input type="radio" name="clock" value="12" checked={settings.clock === '12'} /> 12
-            Hours
-            <input type="radio" name="clock" value="24" checked={settings.clock === '24'} /> 24
-            Hours
+            <input
+              type="radio"
+              name="clock"
+              value="12"
+              checked={settings.clock === '12'}
+              onChange={handleChangeClock}
+            />{' '}
+            12 Hours
+            <input
+              type="radio"
+              name="clock"
+              value="24"
+              checked={settings.clock === '24'}
+              onChange={handleChangeClock}
+            />{' '}
+            24 Hours
           </div>
         </div>
 
         <div css={control}>
           <label htmlFor="sendtype">Send messages on CTRL+ENTER</label>
           <div>
-            <input type="radio" name="sendtype" value="on" checked={settings.sendType} /> On
-            <input type="radio" name="sendtype" value="off" checked={!settings.sendType} /> Off
+            <input
+              type="radio"
+              name="sendtype"
+              value="on"
+              checked={settings.sendType}
+              onChange={handleChangeSendType}
+            />{' '}
+            On
+            <input
+              type="radio"
+              name="sendtype"
+              value="off"
+              checked={!settings.sendType}
+              onChange={handleChangeSendType}
+            />{' '}
+            Off
           </div>
         </div>
 
         <div css={control}>
           <label htmlFor="language">Language</label>
-          <Select name="language" options={languages} value={settings.language} />
+          <Select name="language" options={languages} value={settings.language} onSelect={handleSelectLanguage} />
         </div>
       </div>
 
       <div css={footer}>
-        <Button fullWidth>Reset to defaults</Button>
+        <Button fullWidth onClick={handleReset}>
+          Reset to defaults
+        </Button>
       </div>
     </div>
   )

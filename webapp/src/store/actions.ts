@@ -1,2 +1,0 @@
-
-export const SETTINGS_RESET = 'SETTINGS_RESET'

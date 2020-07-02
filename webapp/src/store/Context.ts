@@ -1,11 +1,10 @@
 import * as React from 'react'
 
-import { IState, IAction } from '../models/types'
-import { initialState } from './reducer';
+import {IState, IAction} from '../models/types'
 
 const Context = React.createContext<{
-  globalState: IState,
+  globalState: IState
   dispatch: React.Dispatch<IAction>
-}>(undefined);
+}>(undefined)
 
-export default Context;
+export default Context
