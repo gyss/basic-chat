@@ -15,15 +15,11 @@ interface IProps {
   options: Array<Option>
 }
 
-export default function Select({
-  options,
-  value,
-  ...props
-}: IProps & React.InputHTMLAttributes<HTMLSelectElement>) {
+export default function Select({options, value, ...props}: IProps & React.InputHTMLAttributes<HTMLSelectElement>) {
   return (
     <select css={selectStyles} {...props}>
       {options.map((option: Option) => (
-        <option value={option.value} selected={value === option.value}>
+        <option value={option.value} key={option.value} selected={value === option.value}>
           {option.label}
         </option>
       ))}
