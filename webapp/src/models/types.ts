@@ -1,5 +1,4 @@
 export interface ISettings {
-  username: string
   theme: 'light' | 'dark'
   clock: '12' | '24'
   sendType: boolean
@@ -13,7 +12,12 @@ export interface IMessage {
   text: string
 }
 
+export interface IUser {
+  username: string
+}
+
 export interface IState {
+  user: IUser
   settings: ISettings
   messages: Array<IMessage>
 }

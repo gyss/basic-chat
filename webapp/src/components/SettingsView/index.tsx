@@ -15,6 +15,7 @@ import Context from '../../store/Context'
 import Button from '../../controls/Button'
 import Select from '../../controls/Select'
 import InputText from '../../controls/InputText'
+import {updateUser, updateSetting, resetSettings} from '../../common/storage'
 
 const container = css`
   display: flex;
@@ -56,27 +57,39 @@ const languages = [
 
 export default function SettingsView() {
   const {
-    globalState: {settings},
+    globalState: {user, settings},
     dispatch,
   } = React.useContext(Context)
 
+  // Action creators
   function handleChangeClock(event: React.ChangeEvent<HTMLInputElement>) {
-    dispatch({type: SET_SETTINGS_CLOCK, payload: event.target.value})
+    const value = event.target.value
+    dispatch({type: SET_SETTINGS_CLOCK, payload: value})
+    updateSetting({[event.target.name]: value})
   }
   function handleChangeTheme(event: React.ChangeEvent<HTMLInputElement>) {
-    dispatch({type: SET_SETTINGS_THEME, payload: event.target.value})
+    const value = event.target.value
+    dispatch({type: SET_SETTINGS_THEME, payload: value})
+    updateSetting({[event.target.name]: value})
   }
   function handleChangeUsername(event: React.ChangeEvent<HTMLInputElement>) {
-    dispatch({type: SET_SETTINGS_USERNAME, payload: event.target.value.replace(/[\W_]+/g, '')})
+    const value = event.target.value.replace(/[\W_]+/g, '')
+    dispatch({type: SET_SETTINGS_USERNAME, payload: value})
+    updateUser({[event.target.name]: value})
   }
   function handleChangeSendType(event: React.ChangeEvent<HTMLInputElement>) {
-    dispatch({type: SET_SETTINGS_SENDTYPE, payload: event.target.value === 'on'})
+    const value = event.target.value === 'on'
+    dispatch({type: SET_SETTINGS_SENDTYPE, payload: value})
+    updateSetting({[event.target.name]: value})
   }
   function handleSelectLanguage(event: React.ChangeEvent<HTMLSelectElement>) {
-    dispatch({type: SET_SETTINGS_LANGUAGE, payload: event.target.value})
+    const value = event.target.value
+    dispatch({type: SET_SETTINGS_LANGUAGE, payload: value})
+    updateSetting({[event.target.name]: value})
   }
   function handleReset() {
     dispatch({type: SETTINGS_RESET})
+    resetSettings()
   }
 
   return (
@@ -84,7 +97,7 @@ export default function SettingsView() {
       <div css={settingsBox}>
         <div css={control}>
           <label htmlFor="username">User name</label>
-          <InputText name="username" value={settings.username} onChange={handleChangeUsername} />
+          <InputText name="username" value={user.username} onChange={handleChangeUsername} />
         </div>
 
         <div css={control}>
@@ -132,11 +145,11 @@ export default function SettingsView() {
         </div>
 
         <div css={control}>
-          <label htmlFor="sendtype">Send messages on CTRL+ENTER</label>
+          <label htmlFor="sendType">Send messages on CTRL+ENTER</label>
           <div>
             <input
               type="radio"
-              name="sendtype"
+              name="sendType"
               value="on"
               checked={settings.sendType}
               onChange={handleChangeSendType}
@@ -144,7 +157,7 @@ export default function SettingsView() {
             On
             <input
               type="radio"
-              name="sendtype"
+              name="sendType"
               value="off"
               checked={!settings.sendType}
               onChange={handleChangeSendType}
@@ -155,7 +168,7 @@ export default function SettingsView() {
 
         <div css={control}>
           <label htmlFor="language">Language</label>
-          <Select name="language" options={languages} value={settings.language} onSelect={handleSelectLanguage} />
+          <Select name="language" options={languages} value={settings.language} onChange={handleSelectLanguage} />
         </div>
       </div>
 

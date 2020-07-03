@@ -1,4 +1,4 @@
-import {IState, IAction, IMessage} from '../models/types'
+import {IState, IUser, IAction, IMessage} from '../models/types'
 import {
   SETTINGS_RESET,
   SET_SETTINGS_CLOCK,
@@ -7,14 +7,14 @@ import {
   SET_SETTINGS_THEME,
   SET_SETTINGS_SENDTYPE,
 } from './actionTypes'
+import {getSettings, updateUser, getUser as getStorageUser} from '../common/storage'
+import {DEFAULT_USER_SETTINGS} from '../common/config'
 
 export const initialState: IState = {
+  user: getUser(),
   settings: {
-    username: 'guest',
-    theme: 'light',
-    clock: '12',
-    sendType: false,
-    language: 'en',
+    ...DEFAULT_USER_SETTINGS,
+    ...getSettings(),
   },
   messages: [],
 }
@@ -22,7 +22,10 @@ export const initialState: IState = {
 export default function appReducer(state: IState, action: IAction) {
   switch (action.type) {
     case SETTINGS_RESET:
-      return state
+      return {
+        ...state,
+        settings: DEFAULT_USER_SETTINGS,
+      }
     case SET_SETTINGS_CLOCK:
       return {
         ...state,
@@ -66,6 +69,21 @@ export default function appReducer(state: IState, action: IAction) {
     default:
       return state
   }
+}
+
+// get stored user or return a default one
+function getUser() {
+  const user = getStorageUser()
+  if (user) {
+    return user
+  }
+
+  const random = new String(Math.floor(Math.random() * 9999) + 1).padStart(4, '0')
+  const newUser: IUser = {
+    username: 'user' + random,
+  }
+  updateUser(newUser)
+  return newUser
 }
 
 function getDummyMessages() {
