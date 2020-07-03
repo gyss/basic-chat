@@ -13,6 +13,7 @@ export interface IMessage {
 }
 
 export interface IUser {
+  id: string
   username: string
 }
 

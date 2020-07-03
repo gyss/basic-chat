@@ -15,7 +15,7 @@ import Context from '../../store/Context'
 import Button from '../../controls/Button'
 import Select from '../../controls/Select'
 import InputText from '../../controls/InputText'
-import {updateUser, updateSetting, resetSettings} from '../../common/storage'
+import Settings from '../../models/Settings'
 
 const container = css`
   display: flex;
@@ -65,31 +65,31 @@ export default function SettingsView() {
   function handleChangeClock(event: React.ChangeEvent<HTMLInputElement>) {
     const value = event.target.value
     dispatch({type: SET_SETTINGS_CLOCK, payload: value})
-    updateSetting({[event.target.name]: value})
+    Settings.save({[event.target.name]: value})
   }
   function handleChangeTheme(event: React.ChangeEvent<HTMLInputElement>) {
     const value = event.target.value
     dispatch({type: SET_SETTINGS_THEME, payload: value})
-    updateSetting({[event.target.name]: value})
+    Settings.save({[event.target.name]: value})
   }
   function handleChangeUsername(event: React.ChangeEvent<HTMLInputElement>) {
     const value = event.target.value.replace(/[\W_]+/g, '')
     dispatch({type: SET_SETTINGS_USERNAME, payload: value})
-    updateUser({[event.target.name]: value})
+    Settings.save({[event.target.name]: value})
   }
   function handleChangeSendType(event: React.ChangeEvent<HTMLInputElement>) {
     const value = event.target.value === 'on'
     dispatch({type: SET_SETTINGS_SENDTYPE, payload: value})
-    updateSetting({[event.target.name]: value})
+    Settings.save({[event.target.name]: value})
   }
   function handleSelectLanguage(event: React.ChangeEvent<HTMLSelectElement>) {
     const value = event.target.value
     dispatch({type: SET_SETTINGS_LANGUAGE, payload: value})
-    updateSetting({[event.target.name]: value})
+    Settings.save({[event.target.name]: value})
   }
   function handleReset() {
     dispatch({type: SETTINGS_RESET})
-    resetSettings()
+    Settings.reset()
   }
 
   return (
