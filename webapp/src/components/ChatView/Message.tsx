@@ -1,6 +1,7 @@
 /** @jsx jsx */
 
 import * as React from 'react'
+import * as moment from 'moment'
 import {jsx} from '@emotion/core'
 import styled from '@emotion/styled'
 
@@ -14,7 +15,7 @@ interface IProps {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: ${(props: IProps) => props.isOwnedByUser ? 'flex-end': 'flex-start'};
+  align-items: ${(props: IProps) => (props.isOwnedByUser ? 'flex-end' : 'flex-start')};
 
   > div {
     padding: 10px;
@@ -31,7 +32,7 @@ const Bubble = styled.div`
     content: '';
     position: absolute;
     top: -4px;
-    ${(props: IProps) => props.isOwnedByUser ? 'right': 'left'}: 15px;
+    ${(props: IProps) => (props.isOwnedByUser ? 'right' : 'left')}: 10px;
     width: 10px;
     height: 10px;
     background-color: white;
@@ -43,8 +44,8 @@ export default function Message({message, isOwnedByUser}: IProps) {
   return (
     <Container isOwnedByUser={isOwnedByUser}>
       <div>
-        {!isOwnedByUser && message.user + ', '}
-        {message.timestamp}
+        {!isOwnedByUser && message.user.username + ', '}
+        {moment(message.timestamp).format('hh:mm a')}
       </div>
       <Bubble isOwnedByUser={isOwnedByUser}>{message.text}</Bubble>
     </Container>
