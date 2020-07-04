@@ -26,13 +26,14 @@ const Bubble = styled.div`
   position: relative;
   background-color: white;
   border-radius: 20px;
+  min-width: 40px;
   width: fit-content;
 
   &::after {
     content: '';
     position: absolute;
     top: -4px;
-    ${(props: IProps) => (props.isOwnedByUser ? 'right' : 'left')}: 10px;
+    ${(props: IProps) => (props.isOwnedByUser ? 'right' : 'left')}: 15px;
     width: 10px;
     height: 10px;
     background-color: white;
