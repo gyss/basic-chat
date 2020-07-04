@@ -57,10 +57,10 @@ export default function App() {
             <Navigation />
             <Switch>
               <Route path="/settings">
-                <ChatView />
+                <SettingsView />
               </Route>
               <Route path="/">
-                <SettingsView />
+                <ChatView />
               </Route>
             </Switch>
           </AppWrapper>

@@ -6,7 +6,9 @@ const io = require('socket.io')(http)
 
 // https://socket.io/get-started/chat
 
-io.on('connection', socket => {
+const CHAT_CHANNEL = 'CHAT'
+
+io.on('connection', (socket) => {
   console.log('a user connected')
 
   socket.broadcast.emit('hi')
@@ -15,9 +17,13 @@ io.on('connection', socket => {
     console.log('user disconnected')
   })
 
-  socket.on('chat message', msg => {
-    console.log('message: ' + msg)
+  socket.on('chat message', (msg) => {
+    console.log('message: ', msg)
     io.emit('chat message', msg)
+  })
+  socket.on(CHAT_CHANNEL, (payload) => {
+    console.log('message recieved: ', payload)
+    io.emit(CHAT_CHANNEL, payload)
   })
 })
 

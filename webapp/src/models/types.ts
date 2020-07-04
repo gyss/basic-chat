@@ -6,8 +6,8 @@ export interface ISettings {
 }
 
 export interface IMessage {
-  id: number
-  user: string
+  id: string
+  user: IUser
   timestamp: number
   text: string
 }
@@ -20,7 +20,10 @@ export interface IUser {
 export interface IState {
   user: IUser
   settings: ISettings
-  messages: Array<IMessage>
+  chatView: {
+    message: string
+    messages: Array<IMessage>
+  }
 }
 
 export interface IAction {
