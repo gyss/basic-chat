@@ -1,6 +1,6 @@
 import * as io from 'socket.io-client'
 
-import {IMessage} from '../models/types'
+import {IMessage} from '../types'
 import {SEND_CHAT_MESSAGE} from '../store/actionTypes'
 import Context from '../store/Context'
 

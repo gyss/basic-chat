@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import {IState, IAction} from '../models/types'
+import {IState, IAction} from '../types'
 
 const Context = React.createContext<{
   globalState: IState

@@ -1,4 +1,4 @@
-import {ISettings} from '../models/types'
+import {ISettings} from '../types'
 import {store, load} from '../common/local'
 
 const SETTINGS_KEY = 'settings'

@@ -1,4 +1,4 @@
-import {IState, IAction, IMessage} from '../models/types'
+import {IState, IAction, IMessage} from '../types'
 import {
   SETTINGS_RESET,
   SET_SETTINGS_CLOCK,

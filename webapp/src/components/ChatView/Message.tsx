@@ -5,7 +5,7 @@ import * as moment from 'moment'
 import {jsx} from '@emotion/core'
 import styled from '@emotion/styled'
 
-import {IMessage} from '../../models/types'
+import {IMessage} from '../../types'
 
 interface IProps {
   message?: IMessage

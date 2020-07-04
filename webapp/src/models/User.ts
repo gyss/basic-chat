@@ -1,4 +1,4 @@
-import {IUser} from '../models/types'
+import {IUser} from '../types'
 import {store, load} from '../common/local'
 
 const USER_KEY = 'user'
