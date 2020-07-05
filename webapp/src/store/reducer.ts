@@ -1,7 +1,7 @@
 import {IState, IAction, IMessage} from '../types'
 import {
   SETTINGS_RESET,
-  SET_SETTINGS_CLOCK,
+  SET_SETTINGS_HOURFORMAT,
   SET_SETTINGS_LANGUAGE,
   SET_SETTINGS_USERNAME,
   SET_SETTINGS_THEME,
@@ -30,12 +30,12 @@ export default function appReducer(state: IState, action: IAction) {
         ...state,
         settings: Settings.getDefaultValues(),
       }
-    case SET_SETTINGS_CLOCK:
+    case SET_SETTINGS_HOURFORMAT:
       return {
         ...state,
         settings: {
           ...state.settings,
-          clock: action.payload,
+          hourFormat: action.payload,
         },
       }
     case SET_SETTINGS_LANGUAGE:

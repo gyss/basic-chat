@@ -5,7 +5,7 @@ import {css, jsx} from '@emotion/core'
 
 import {
   SETTINGS_RESET,
-  SET_SETTINGS_CLOCK,
+  SET_SETTINGS_HOURFORMAT,
   SET_SETTINGS_LANGUAGE,
   SET_SETTINGS_USERNAME,
   SET_SETTINGS_SENDTYPE,
@@ -62,9 +62,9 @@ export default function SettingsView() {
   } = React.useContext(Context)
 
   // Action creators
-  function handleChangeClock(event: React.ChangeEvent<HTMLInputElement>) {
+  function handleChangeHourFormat(event: React.ChangeEvent<HTMLInputElement>) {
     const value = event.target.value
-    dispatch({type: SET_SETTINGS_CLOCK, payload: value})
+    dispatch({type: SET_SETTINGS_HOURFORMAT, payload: value})
     Settings.save({[event.target.name]: value})
   }
   function handleChangeTheme(event: React.ChangeEvent<HTMLInputElement>) {
@@ -123,22 +123,22 @@ export default function SettingsView() {
         </div>
 
         <div css={control}>
-          <label htmlFor="clock">Clock display</label>
+          <label htmlFor="hourformat">Clock display</label>
           <div>
             <input
               type="radio"
-              name="clock"
+              name="hourformat"
               value="12"
-              checked={settings.clock === '12'}
-              onChange={handleChangeClock}
+              checked={settings.hourFormat === '12'}
+              onChange={handleChangeHourFormat}
             />{' '}
             12 Hours
             <input
               type="radio"
-              name="clock"
+              name="hourformat"
               value="24"
-              checked={settings.clock === '24'}
-              onChange={handleChangeClock}
+              checked={settings.hourFormat === '24'}
+              onChange={handleChangeHourFormat}
             />{' '}
             24 Hours
           </div>

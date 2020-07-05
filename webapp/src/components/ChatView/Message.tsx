@@ -8,14 +8,15 @@ import styled from '@emotion/styled'
 import {IMessage} from '../../types'
 
 interface IProps {
-  message?: IMessage
+  message: IMessage
+  hourFormat?: '24' | '12'
   isOwnedByUser?: boolean
 }
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: ${(props: IProps) => (props.isOwnedByUser ? 'flex-end' : 'flex-start')};
+  align-items: ${(props: Partial<IProps>) => (props.isOwnedByUser ? 'flex-end' : 'flex-start')};
 
   > div {
     padding: 10px;
@@ -33,7 +34,7 @@ const Bubble = styled.div`
     content: '';
     position: absolute;
     top: -4px;
-    ${(props: IProps) => (props.isOwnedByUser ? 'right' : 'left')}: 15px;
+    ${(props: Partial<IProps>) => (props.isOwnedByUser ? 'right' : 'left')}: 15px;
     width: 10px;
     height: 10px;
     background-color: white;
@@ -41,12 +42,12 @@ const Bubble = styled.div`
   }
 `
 
-export default function Message({message, isOwnedByUser}: IProps) {
+export default function Message({message, isOwnedByUser, hourFormat}: IProps) {
   return (
     <Container isOwnedByUser={isOwnedByUser}>
       <div>
         {!isOwnedByUser && message.user.username + ', '}
-        {moment(message.timestamp).format('hh:mm a')}
+        {moment(message.timestamp).format(hourFormat === '24' ? 'HH:mm' : 'hh:mm a')}
       </div>
       <Bubble isOwnedByUser={isOwnedByUser}>{message.text}</Bubble>
     </Container>

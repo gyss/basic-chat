@@ -36,7 +36,7 @@ const footer = css`
 
 export default function ChatView() {
   const {
-    globalState: {user, chatView},
+    globalState: {user, settings, chatView},
     dispatch,
   } = React.useContext(Context)
 
@@ -82,7 +82,12 @@ export default function ChatView() {
           </div>
         ) : (
           chatView.messages.map((message) => (
-            <Message key={message.id} message={message} isOwnedByUser={message.user.id === user.id} />
+            <Message
+              key={message.id}
+              message={message}
+              isOwnedByUser={message.user.id === user.id}
+              hourFormat={settings.hourFormat}
+            />
           ))
         )}
       </div>

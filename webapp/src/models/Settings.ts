@@ -22,7 +22,7 @@ export default class Settings {
   static getDefaultValues(): ISettings {
     return {
       theme: 'light',
-      clock: '12',
+      hourFormat: '12',
       sendType: false,
       language: 'en',
     }
