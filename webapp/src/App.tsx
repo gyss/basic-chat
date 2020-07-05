@@ -8,6 +8,7 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 
 import appReducer, {initialState} from './store/reducer'
 import Context from './store/Context'
+import expose from './store/exposedContext'
 import ErrorBoundary from './components/ErrorBoundary'
 import ChatView from './components/ChatView'
 import SettingsView from './components/SettingsView'
@@ -50,6 +51,12 @@ export default function App() {
 
   return (
     <Context.Provider value={{globalState, dispatch}}>
+      <Context.Consumer>
+        {(value) => {
+          expose(value.dispatch, value.globalState)
+          return null
+        }}
+      </Context.Consumer>
       <ErrorBoundary>
         <Global styles={globalStyles} />
         <Router>

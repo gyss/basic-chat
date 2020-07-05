@@ -4,7 +4,7 @@ import * as React from 'react'
 import {css, jsx} from '@emotion/core'
 
 import {IMessage} from '../../types'
-import {SET_CHAT_MESSAGE, SEND_CHAT_MESSAGE} from '../../store/actionTypes'
+import {SET_CHAT_MESSAGE, ADD_CHAT_MESSAGE} from '../../store/actionTypes'
 import Context from '../../store/Context'
 import chatSocket from '../../network/chatSocket'
 import Message from './Message'
@@ -69,7 +69,7 @@ export default function ChatView() {
       timestamp,
       text: chatView.message,
     }
-    dispatch({type: SEND_CHAT_MESSAGE, payload: {message}})
+    dispatch({type: ADD_CHAT_MESSAGE, payload: message})
     chatSocket.sendMessage(message)
   }
 

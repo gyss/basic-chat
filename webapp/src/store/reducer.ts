@@ -6,7 +6,7 @@ import {
   SET_SETTINGS_USERNAME,
   SET_SETTINGS_THEME,
   SET_SETTINGS_SENDTYPE,
-  SEND_CHAT_MESSAGE,
+  ADD_CHAT_MESSAGE,
   SET_CHAT_MESSAGE,
   RECEIVE_CHAT_MESSAGE,
 } from './actionTypes'
@@ -78,11 +78,11 @@ export default function appReducer(state: IState, action: IAction) {
           message: action.payload,
         },
       }
-    case SEND_CHAT_MESSAGE:
+    case ADD_CHAT_MESSAGE:
       return {
         ...state,
         chatView: {
-          messages: [...state.chatView.messages, action.payload.message],
+          messages: [...state.chatView.messages, action.payload],
           message: '',
         },
       }

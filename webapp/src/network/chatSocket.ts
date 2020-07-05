@@ -1,9 +1,8 @@
 import * as io from 'socket.io-client'
 
 import {IMessage} from '../types'
-import {SEND_CHAT_MESSAGE} from '../store/actionTypes'
-import Context from '../store/Context'
-
+import {ADD_CHAT_MESSAGE} from '../store/actionTypes'
+import {getContext} from '../store/exposedContext'
 const CHAT_CHANNEL = 'CHAT'
 
 class Socket {
@@ -24,16 +23,15 @@ class Socket {
     console.debug('Stablished chat websocket to ', this.url)
   }
 
-  onChatEvent(data: IMessage) {
-    console.log('Chat websocket event')
-    console.log(data)
-    console.log('....', Context)
+  onChatEvent(message: IMessage) {
+    const {
+      dispatch,
+      globalState: {user},
+    } = getContext()
 
-    /*???
-    if (user !== local) {
-      dispatch({type: SEND_CHAT_MESSAGE, payload: data})
+    if (user.id !== message.user.id) {
+      dispatch({type: ADD_CHAT_MESSAGE, payload: message})
     }
-    */
   }
 
   sendMessage(payload: IMessage) {
