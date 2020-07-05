@@ -26,6 +26,7 @@ const Container = styled.div`
 const Bubble = styled.div`
   position: relative;
   background-color: white;
+  color: black;
   border-radius: 20px;
   min-width: 40px;
   width: fit-content;

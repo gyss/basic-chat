@@ -15,13 +15,6 @@ import SettingsView from './components/SettingsView'
 import Navigation from './components/Navigation'
 
 const globalStyles = css`
-  :root {
-    --primary-color: #009688;
-    --secondary-color: #58cdbd;
-    --tertiary-color: #c3fcf2;
-    --counter-color: #f97dea;
-  }
-
   html,
   body,
   #root {
@@ -37,8 +30,29 @@ const globalStyles = css`
   body {
     font-family: Circular, Arial, sans-serif;
     font-size: 18px;
+    color: var(--font-color);
     padding: 0;
     margin: 0;
+  }
+`
+
+const themeLight = css`
+  :root {
+    --primary-color: #009688;
+    --secondary-color: #58cdbd;
+    --tertiary-color: #c3fcf2;
+    --counter-color: #f97dea;
+    --font-color: black;
+  }
+`
+
+const themeDark = css`
+  :root {
+    --primary-color: #242f2e;
+    --tertiary-color: #515d5c;
+    --secondary-color: #566877;
+    --counter-color: #ff70c2;
+    --font-color: white;
   }
 `
 
@@ -60,6 +74,7 @@ export default function App() {
       </Context.Consumer>
       <ErrorBoundary>
         <Global styles={globalStyles} />
+        <Global styles={globalState.settings.theme === 'light' ? themeLight : themeDark} />
         <Router>
           <AppWrapper>
             <Navigation />
