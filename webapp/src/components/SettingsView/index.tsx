@@ -123,11 +123,11 @@ export default function SettingsView() {
         </div>
 
         <div css={control}>
-          <label htmlFor="hourformat">Clock display</label>
+          <label htmlFor="hourFormat">Clock display</label>
           <div>
             <input
               type="radio"
-              name="hourformat"
+              name="hourFormat"
               value="12"
               checked={settings.hourFormat === '12'}
               onChange={handleChangeHourFormat}
@@ -135,7 +135,7 @@ export default function SettingsView() {
             12 Hours
             <input
               type="radio"
-              name="hourformat"
+              name="hourFormat"
               value="24"
               checked={settings.hourFormat === '24'}
               onChange={handleChangeHourFormat}

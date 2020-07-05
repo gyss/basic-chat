@@ -1,5 +1,5 @@
 export function store(key: string, data: Object) {
-  const currentData: Object = window.localStorage.getItem(key)
+  const currentData: Object = JSON.parse(window.localStorage.getItem(key) || '{}')
   window.localStorage.setItem(
     key,
     JSON.stringify({
