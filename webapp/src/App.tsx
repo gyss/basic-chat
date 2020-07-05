@@ -16,9 +16,10 @@ import Navigation from './components/Navigation'
 
 const globalStyles = css`
   :root {
-    --green: #d4fde6;
-    --blue: #6559fb;
-    --pink: #ffcbc9;
+    --primary-color: #009688;
+    --secondary-color: #58cdbd;
+    --tertiary-color: #c3fcf2;
+    --counter-color: #f97dea;
   }
 
   html,
@@ -42,7 +43,7 @@ const globalStyles = css`
 `
 
 const AppWrapper = styled.div`
-  background-color: var(--green);
+  background-color: var(--tertiary-color);
   min-height: 100%;
 `
 
@@ -63,7 +64,7 @@ export default function App() {
           <AppWrapper>
             <Navigation />
             <Switch>
-              <Route path="/settings">
+              <Route exact path="/settings">
                 <SettingsView />
               </Route>
               <Route path="/">

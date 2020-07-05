@@ -5,19 +5,19 @@ import {css, jsx} from '@emotion/core'
 import styled from '@emotion/styled'
 
 const StyledButton = styled.button`
-  background-color: #00d1b2;
+  background-color: var(--primary-color);
   border-color: transparent;
   color: #fff;
   cursor: pointer;
-  font-size: 1.125em;
-  padding-left: 1.125em;
-  padding-right: 1.125em;
+  font-size: 1.125rem;
+  padding-left: 1.125rem;
+  padding-right: 1.125rem;
   ${(props: IProps) => props.fullWidth && 'width: 100%;'}
   &:focus {
     outline: none;
   }
   &:hover {
-    background-color: #1ca792;
+    background-color: var(--secondary-color);
   }
 `
 

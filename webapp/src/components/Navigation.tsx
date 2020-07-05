@@ -2,10 +2,10 @@
 
 import * as React from 'react'
 import {css, Global, jsx} from '@emotion/core'
-import { Link } from "react-router-dom";
+import {NavLink} from 'react-router-dom'
 
 const navigationStyles = css`
-  background-color: rgb(0, 150, 136);
+  background-color: var(--primary-color);
   width: 100%;
 
   ul {
@@ -16,30 +16,36 @@ const navigationStyles = css`
   ul > li {
     display: inline-block;
     padding: 1rem 1.125rem;
-    
-    a, a:visited, a:hover {
-      color: #fff;
+
+    a,
+    a:visited,
+    a:hover {
       text-decoration: none;
+      color: var(--tertiary-color);
     }
-    a: hover {
-      color: #ccc;
+    a:hover {
+      color: white;
     }
   }
 `
 
-const selectedStyles = css`
-  text-decoration: underline;
-`
+const activeStyle = {
+  color: 'white',
+}
 
 export default function Navigation() {
   return (
     <nav css={navigationStyles}>
       <ul>
         <li>
-          <Link to="/">Chat</Link>
+          <NavLink exact to="/" activeStyle={activeStyle}>
+            Chat
+          </NavLink>
         </li>
         <li>
-          <Link to="/settings">Settings</Link>
+          <NavLink exact to="/settings" activeStyle={activeStyle}>
+            Settings
+          </NavLink>
         </li>
       </ul>
     </nav>
