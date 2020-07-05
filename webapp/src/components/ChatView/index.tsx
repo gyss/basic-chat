@@ -49,15 +49,12 @@ export default function ChatView() {
   }
 
   function handleKeyDownMessage(event: React.KeyboardEvent<HTMLInputElement>) {
-    console.log(event.keyCode)
-    if (event.keyCode) {
-      // enter
-      // handleSendMessage()
+    if (settings.sendType && event.ctrlKey && event.keyCode === 13) {
+      handleSendMessage()
     }
   }
 
   function handleSendMessage() {
-    console.log('SEND BUTON!')
     if (!chatView.message) {
       return
     }
