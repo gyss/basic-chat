@@ -1,7 +1,9 @@
 /** @format */
 
-const path = require('path')
+require('dotenv').config()
 
+const path = require('path')
+const webpack = require('webpack')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 
 module.exports = {
@@ -25,7 +27,7 @@ module.exports = {
   optimization: {
     usedExports: true, // Tree shaking
   },
-  plugins: [new CleanWebpackPlugin()],
+  plugins: [new CleanWebpackPlugin(), new webpack.EnvironmentPlugin(['CHAT_SERVER_BASE_URL'])],
   module: {
     rules: [
       {
