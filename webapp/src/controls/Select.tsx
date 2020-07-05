@@ -17,9 +17,9 @@ interface IProps {
 
 export default function Select({options, value, ...props}: IProps & React.InputHTMLAttributes<HTMLSelectElement>) {
   return (
-    <select css={selectStyles} {...props}>
+    <select css={selectStyles} {...props} value={value}>
       {options.map((option: Option) => (
-        <option value={option.value} key={option.value} selected={value === option.value}>
+        <option value={option.value} key={option.value}>
           {option.label}
         </option>
       ))}
