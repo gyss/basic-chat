@@ -20,6 +20,16 @@ const navigationStyles = css`
   a + a {
     margin-left: 1rem;
   }
+
+  :after {
+    content: '';
+    background-color: var(--primary-color);
+    position: absolute;
+    width: 100%;
+    height: 53px;
+    left: 0;
+    z-index: -1;
+  }
 `
 
 const activeStyle = {

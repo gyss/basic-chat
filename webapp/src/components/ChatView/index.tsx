@@ -12,16 +12,10 @@ import Button from '../../controls/Button'
 import InputText from '../../controls/InputText'
 import sendIcon from '../../../assets/icons/send.svg'
 
-const container = css`
-  display: flex;
-  flex-direction: column;
-  height: calc(100vh - 53px);
-`
-
 const messagesBox = css`
   padding: 1rem;
   overflow-y: auto;
-  flex-grow: 1;
+  flex: 1;
 `
 
 const footer = css`
@@ -78,7 +72,7 @@ export default function ChatView() {
   }
 
   return (
-    <div css={container}>
+    <React.Fragment>
       <div css={messagesBox}>
         {!chatView.messages.length ? (
           <div>
@@ -107,6 +101,6 @@ export default function ChatView() {
           <img src={sendIcon} css={iconStyles} />
         </Button>
       </div>
-    </div>
+    </React.Fragment>
   )
 }

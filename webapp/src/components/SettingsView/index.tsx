@@ -17,21 +17,10 @@ import Select from '../../controls/Select'
 import InputText from '../../controls/InputText'
 import Settings from '../../models/Settings'
 
-const container = css`
-  display: flex;
-  flex-direction: column;
-  height: calc(100vh - 53px);
-
-  @media (min-width: 700px) {
-    max-width: 700px;
-    margin: 0 auto;
-  }
-`
-
 const settingsBox = css`
   padding: 1rem;
   overflow-y: auto;
-  flex-grow: 1;
+  flex: 1;
 `
 
 const control = css`
@@ -93,7 +82,7 @@ export default function SettingsView() {
   }
 
   return (
-    <div css={container}>
+    <React.Fragment>
       <div css={settingsBox}>
         <div css={control}>
           <label htmlFor="username">User name</label>
@@ -171,12 +160,11 @@ export default function SettingsView() {
           <Select name="language" options={languages} value={settings.language} onChange={handleSelectLanguage} />
         </div>
       </div>
-
       <div css={footer}>
         <Button fullWidth onClick={handleReset}>
           Reset to defaults
         </Button>
       </div>
-    </div>
+    </React.Fragment>
   )
 }

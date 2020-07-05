@@ -31,6 +31,7 @@ const globalStyles = css`
     font-family: Circular, Arial, sans-serif;
     font-size: 18px;
     color: var(--font-color);
+    background-color: var(--tertiary-color);
     padding: 0;
     margin: 0;
   }
@@ -57,8 +58,15 @@ const themeDark = css`
 `
 
 const AppWrapper = styled.div`
-  background-color: var(--tertiary-color);
   min-height: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: 700px) {
+    max-width: 700px;
+    margin: 0 auto;
+  }
 `
 
 export default function App() {
