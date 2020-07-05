@@ -10,8 +10,7 @@ const StyledButton = styled.button`
   color: #fff;
   cursor: pointer;
   font-size: 1.125rem;
-  padding-left: 1.125rem;
-  padding-right: 1.125rem;
+  padding: 0.5rem 1.125rem;
   ${(props: IProps) => props.fullWidth && 'width: 100%;'}
   &:focus {
     outline: none;

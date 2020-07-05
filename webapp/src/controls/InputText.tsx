@@ -9,11 +9,9 @@ const inputStyles = css`
   background-color: #fff;
   border-color: #dbdbdb;
   border: 1px solid transparent;
-  border-radius: 4px;
   display: inline-flex;
-  font-size: 1rem;
-  height: 2em;
-  line-height: 1.5;
+  font-size: 1.125rem;
+  height: 41px;
   padding-left: calc(0.75em - 1px);
   padding-right: calc(0.75em - 1px);
   &:focus {
