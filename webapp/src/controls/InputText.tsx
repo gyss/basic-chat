@@ -14,12 +14,13 @@ const inputStyles = css`
   font-size: 1rem;
   height: 2em;
   line-height: 1.5;
-  padding-left: calc(.75em - 1px);
-  padding-right: calc(.75em - 1px);
+  padding-left: calc(0.75em - 1px);
+  padding-right: calc(0.75em - 1px);
+  &:focus {
+    outline: none;
+  }
 `
 
 export default function InputText(props: React.InputHTMLAttributes<HTMLInputElement>) {
-  return (
-    <input type="text" css={inputStyles} {...props} />
-  )
+  return <input type="text" css={inputStyles} {...props} />
 }

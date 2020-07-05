@@ -13,6 +13,12 @@ const StyledButton = styled.button`
   padding-left: 1.125em;
   padding-right: 1.125em;
   ${(props: IProps) => props.fullWidth && 'width: 100%;'}
+  &:focus {
+    outline: none;
+  }
+  &:hover {
+    background-color: #1ca792;
+  }
 `
 
 interface IProps {
