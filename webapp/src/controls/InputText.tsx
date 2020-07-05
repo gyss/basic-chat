@@ -11,7 +11,7 @@ const inputStyles = css`
   border: 1px solid transparent;
   display: inline-flex;
   font-size: 1.125rem;
-  height: 41px;
+  height: 40px;
   padding-left: calc(0.75em - 1px);
   padding-right: calc(0.75em - 1px);
   &:focus {

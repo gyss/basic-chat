@@ -4,7 +4,14 @@ import * as React from 'react'
 import {css, jsx} from '@emotion/core'
 import styled from '@emotion/styled'
 
-const StyledButton = styled.button`
+const StyledAnchor = styled.a`
+  display: inline-block;
+  text-align: center;
+
+  min-width: 70px;
+  height: 40px;
+  padding: 6px 8px;
+
   background-color: var(--primary-color);
   border-color: transparent;
   color: #fff;
@@ -21,7 +28,7 @@ const StyledButton = styled.button`
   &:focus {
     outline: none;
   }
-  &:hover {
+  &:active {
     background-color: var(--secondary-color);
   }
 `
@@ -36,10 +43,10 @@ export default function Button({
   fullWidth,
   children,
   ...props
-}: IProps & React.ButtonHTMLAttributes<HTMLButtonElement>) {
+}: IProps & React.ButtonHTMLAttributes<HTMLAnchorElement>) {
   return (
-    <StyledButton fullWidth={fullWidth} {...props}>
+    <StyledAnchor fullWidth={fullWidth} {...props}>
       {children}
-    </StyledButton>
+    </StyledAnchor>
   )
 }

@@ -28,6 +28,7 @@ const footer = css`
   padding: 1rem;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
   input {
     width: 100%;
