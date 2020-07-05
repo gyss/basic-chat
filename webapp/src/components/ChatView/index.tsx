@@ -10,6 +10,7 @@ import chatSocket from '../../network/chatSocket'
 import Message from './Message'
 import Button from '../../controls/Button'
 import InputText from '../../controls/InputText'
+import sendIcon from '../../../assets/icons/send.svg'
 
 const container = css`
   display: flex;
@@ -32,6 +33,11 @@ const footer = css`
     width: 100%;
     margin-right: 1rem;
   }
+`
+
+const iconStyles = css`
+  width: 25px;
+  height: 25px;
 `
 
 export default function ChatView() {
@@ -96,7 +102,9 @@ export default function ChatView() {
           onKeyDown={handleKeyDownMessage}
           onChange={handleChangeMessage}
         />
-        <Button onClick={handleSendMessage}>Send</Button>
+        <Button onClick={handleSendMessage} noPadding>
+          <img src={sendIcon} css={iconStyles} />
+        </Button>
       </div>
     </div>
   )

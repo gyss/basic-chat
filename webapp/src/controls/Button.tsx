@@ -9,9 +9,15 @@ const StyledButton = styled.button`
   border-color: transparent;
   color: #fff;
   cursor: pointer;
-  font-size: 1.125rem;
-  padding: 0.5rem 1.125rem;
+
   ${(props: IProps) => props.fullWidth && 'width: 100%;'}
+  ${(props: IProps) =>
+    !props.noPadding &&
+    `
+    padding: 0.5rem 1.125rem;
+    font-size: 1.125rem;
+  `}
+
   &:focus {
     outline: none;
   }
@@ -22,6 +28,7 @@ const StyledButton = styled.button`
 
 interface IProps {
   fullWidth?: boolean
+  noPadding?: boolean
   children: React.ReactNode
 }
 
