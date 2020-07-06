@@ -9,6 +9,8 @@ import {
   ADD_CHAT_MESSAGE,
   SET_CHAT_MESSAGE,
   RECEIVE_CHAT_MESSAGE,
+  ADD_UNREAD_MESSAGE,
+  CLEAR_UNREAD_MESSAGES,
 } from './actionTypes'
 
 import User from '../models/User'
@@ -20,6 +22,9 @@ export const initialState: IState = {
   chatView: {
     message: '',
     messages: [],
+  },
+  navigation: {
+    unreadMessages: 0,
   },
 }
 
@@ -86,10 +91,24 @@ export default function appReducer(state: IState, action: IAction) {
           message: '',
         },
       }
-
     case RECEIVE_CHAT_MESSAGE:
       return state
-
+    case ADD_UNREAD_MESSAGE:
+      return {
+        ...state,
+        navigation: {
+          ...state.navigation,
+          unreadMessages: state.navigation.unreadMessages + 1,
+        },
+      }
+    case CLEAR_UNREAD_MESSAGES:
+      return {
+        ...state,
+        navigation: {
+          ...state.navigation,
+          unreadMessages: 0,
+        },
+      }
     default:
       return state
   }

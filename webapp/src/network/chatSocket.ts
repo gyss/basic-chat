@@ -1,7 +1,7 @@
 import * as io from 'socket.io-client'
 
 import {IMessage} from '../types'
-import {ADD_CHAT_MESSAGE} from '../store/actionTypes'
+import {ADD_CHAT_MESSAGE, ADD_UNREAD_MESSAGE} from '../store/actionTypes'
 import {getContext} from '../store/exposedContext'
 const CHAT_CHANNEL = 'CHAT'
 
@@ -31,6 +31,10 @@ class Socket {
 
     if (user.id !== message.user.id) {
       dispatch({type: ADD_CHAT_MESSAGE, payload: message})
+
+      if (location.pathname !== '/') {
+        dispatch({type: ADD_UNREAD_MESSAGE})
+      }
     }
   }
 

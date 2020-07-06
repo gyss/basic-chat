@@ -44,8 +44,6 @@ export default function ChatView() {
   // Action creators
   function handleChangeMessage(event: React.ChangeEvent<HTMLInputElement>) {
     const value = event.currentTarget.value
-    console.log(event.currentTarget.value)
-    console.log(event.target)
     dispatch({type: SET_CHAT_MESSAGE, payload: value})
   }
 

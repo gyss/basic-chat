@@ -5,6 +5,9 @@ export interface IState {
     message: string
     messages: Array<IMessage>
   }
+  navigation: {
+    unreadMessages: number
+  }
 }
 
 export interface IUser {
