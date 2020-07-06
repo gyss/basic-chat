@@ -5,6 +5,7 @@ require('dotenv').config()
 const path = require('path')
 const webpack = require('webpack')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
+const WebpackPwaManifest = require('webpack-pwa-manifest')
 
 module.exports = {
   mode: 'development',
@@ -27,7 +28,32 @@ module.exports = {
   optimization: {
     usedExports: true, // Tree shaking
   },
-  plugins: [new CleanWebpackPlugin(), new webpack.EnvironmentPlugin(['CHAT_SERVER_BASE_URL'])],
+  plugins: [
+    new CleanWebpackPlugin(),
+    new webpack.EnvironmentPlugin(['CHAT_SERVER_BASE_URL']),
+    new WebpackPwaManifest({
+      name: 'Chat App',
+      short_name: 'ChatApp',
+      description: 'Basic chat made with React/Typescript/NodeJS/Websockets.',
+      filename: 'manifest.json',
+      background_color: '#009688',
+      theme_color: '#009688',
+      display: 'fullscreen',
+      inject: true,
+      ios: true,
+      icons: [
+        {
+          src: path.resolve('./assets/logo.png'),
+          sizes: [72, 96, 128, 144, 192, 384, 512],
+        },
+        {
+          src: path.resolve('./assets/logo.png'),
+          sizes: [120, 152, 167, 180],
+          ios: true,
+        },
+      ],
+    }),
+  ],
   module: {
     rules: [
       {
