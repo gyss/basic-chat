@@ -54,8 +54,8 @@ export default function appReducer(state: IState, action: IAction) {
     case SET_SETTINGS_USERNAME:
       return {
         ...state,
-        settings: {
-          ...state.settings,
+        user: {
+          ...state.user,
           username: action.payload,
         },
       }
