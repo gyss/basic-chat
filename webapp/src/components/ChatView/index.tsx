@@ -11,11 +11,15 @@ import Message from './Message'
 import Button from '../../controls/Button'
 import InputText from '../../controls/InputText'
 import sendIcon from '../../../assets/icons/send.svg'
+import {maxWidth700} from '../../styles'
 
-const messagesBox = css`
-  padding: 1rem;
+const container = css`
   overflow-y: auto;
   flex: 1;
+`
+const messagesBox = css`
+  padding: 1rem;
+  ${maxWidth700}
 `
 
 const footer = css`
@@ -23,6 +27,8 @@ const footer = css`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
+  ${maxWidth700}
 
   input {
     width: 100%;
@@ -71,21 +77,23 @@ export default function ChatView() {
 
   return (
     <React.Fragment>
-      <div css={messagesBox}>
-        {!chatView.messages.length ? (
-          <div>
-            <i>No messages yet</i>
-          </div>
-        ) : (
-          chatView.messages.map((message) => (
-            <Message
-              key={message.id}
-              message={message}
-              isOwnedByUser={message.user.id === user.id}
-              hourFormat={settings.hourFormat}
-            />
-          ))
-        )}
+      <div css={container}>
+        <div css={messagesBox}>
+          {!chatView.messages.length ? (
+            <div>
+              <i>No messages yet</i>
+            </div>
+          ) : (
+            chatView.messages.map((message) => (
+              <Message
+                key={message.id}
+                message={message}
+                isOwnedByUser={message.user.id === user.id}
+                hourFormat={settings.hourFormat}
+              />
+            ))
+          )}
+        </div>
       </div>
       <div css={footer}>
         <InputText

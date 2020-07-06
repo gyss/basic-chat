@@ -62,11 +62,6 @@ const AppWrapper = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-
-  @media (min-width: 700px) {
-    max-width: 700px;
-    margin: 0 auto;
-  }
 `
 
 export default function App() {

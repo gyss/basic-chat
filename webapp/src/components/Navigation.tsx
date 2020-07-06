@@ -7,12 +7,13 @@ import {NavLink, useLocation} from 'react-router-dom'
 
 import {CLEAR_UNREAD_MESSAGES} from '../store/actionTypes'
 import Context from '../store/Context'
+import {maxWidth700} from '../styles'
 
 const navigationStyles = css`
   background-color: var(--primary-color);
   width: 100%;
   display: flex;
-  padding-left: 1rem;
+
   > a {
     text-decoration: none;
     color: var(--tertiary-color);
@@ -34,6 +35,7 @@ const navigationStyles = css`
     left: 0;
     z-index: -1;
   }
+  ${maxWidth700}
 `
 
 interface StyledNavLinkProps {

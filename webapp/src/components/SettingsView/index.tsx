@@ -2,6 +2,7 @@
 
 import * as React from 'react'
 import {css, jsx} from '@emotion/core'
+import {maxWidth700} from '../../styles'
 
 import {
   SETTINGS_RESET,
@@ -17,10 +18,13 @@ import Select from '../../controls/Select'
 import InputText from '../../controls/InputText'
 import Settings from '../../models/Settings'
 
-const settingsBox = css`
-  padding: 1rem;
+const container = css`
   overflow-y: auto;
   flex: 1;
+`
+const settingsBox = css`
+  padding: 1rem;
+  ${maxWidth700}
 `
 
 const control = css`
@@ -37,6 +41,8 @@ const control = css`
 const footer = css`
   padding: 1rem;
   display: flex;
+  width: 100%;
+  ${maxWidth700}
 `
 
 const languages = [
@@ -83,81 +89,83 @@ export default function SettingsView() {
 
   return (
     <React.Fragment>
-      <div css={settingsBox}>
-        <div css={control}>
-          <label htmlFor="username">User name</label>
-          <InputText name="username" value={user.username} onChange={handleChangeUsername} />
-        </div>
-
-        <div css={control}>
-          <label htmlFor="theme">Interface color</label>
-          <div>
-            <input
-              type="radio"
-              name="theme"
-              value="light"
-              checked={settings.theme === 'light'}
-              onChange={handleChangeTheme}
-            />{' '}
-            Light
-            <input
-              type="radio"
-              name="theme"
-              value="dark"
-              checked={settings.theme === 'dark'}
-              onChange={handleChangeTheme}
-            />{' '}
-            Dark
+      <div css={container}>
+        <div css={settingsBox}>
+          <div css={control}>
+            <label htmlFor="username">User name</label>
+            <InputText name="username" value={user.username} onChange={handleChangeUsername} />
           </div>
-        </div>
 
-        <div css={control}>
-          <label htmlFor="hourFormat">Clock display</label>
-          <div>
-            <input
-              type="radio"
-              name="hourFormat"
-              value="12"
-              checked={settings.hourFormat === '12'}
-              onChange={handleChangeHourFormat}
-            />{' '}
-            12 Hours
-            <input
-              type="radio"
-              name="hourFormat"
-              value="24"
-              checked={settings.hourFormat === '24'}
-              onChange={handleChangeHourFormat}
-            />{' '}
-            24 Hours
+          <div css={control}>
+            <label htmlFor="theme">Interface color</label>
+            <div>
+              <input
+                type="radio"
+                name="theme"
+                value="light"
+                checked={settings.theme === 'light'}
+                onChange={handleChangeTheme}
+              />{' '}
+              Light
+              <input
+                type="radio"
+                name="theme"
+                value="dark"
+                checked={settings.theme === 'dark'}
+                onChange={handleChangeTheme}
+              />{' '}
+              Dark
+            </div>
           </div>
-        </div>
 
-        <div css={control}>
-          <label htmlFor="sendType">Send messages on CTRL+ENTER</label>
-          <div>
-            <input
-              type="radio"
-              name="sendType"
-              value="on"
-              checked={settings.sendType}
-              onChange={handleChangeSendType}
-            />{' '}
-            On
-            <input
-              type="radio"
-              name="sendType"
-              value="off"
-              checked={!settings.sendType}
-              onChange={handleChangeSendType}
-            />{' '}
-            Off
+          <div css={control}>
+            <label htmlFor="hourFormat">Clock display</label>
+            <div>
+              <input
+                type="radio"
+                name="hourFormat"
+                value="12"
+                checked={settings.hourFormat === '12'}
+                onChange={handleChangeHourFormat}
+              />{' '}
+              12 Hours
+              <input
+                type="radio"
+                name="hourFormat"
+                value="24"
+                checked={settings.hourFormat === '24'}
+                onChange={handleChangeHourFormat}
+              />{' '}
+              24 Hours
+            </div>
           </div>
-        </div>
 
-        <div css={control}>
-          <label htmlFor="language">Language</label>
-          <Select name="language" options={languages} value={settings.language} onChange={handleSelectLanguage} />
+          <div css={control}>
+            <label htmlFor="sendType">Send messages on CTRL+ENTER</label>
+            <div>
+              <input
+                type="radio"
+                name="sendType"
+                value="on"
+                checked={settings.sendType}
+                onChange={handleChangeSendType}
+              />{' '}
+              On
+              <input
+                type="radio"
+                name="sendType"
+                value="off"
+                checked={!settings.sendType}
+                onChange={handleChangeSendType}
+              />{' '}
+              Off
+            </div>
+          </div>
+
+          <div css={control}>
+            <label htmlFor="language">Language</label>
+            <Select name="language" options={languages} value={settings.language} onChange={handleSelectLanguage} />
+          </div>
         </div>
       </div>
       <div css={footer}>
