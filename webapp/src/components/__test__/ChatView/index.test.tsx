@@ -35,5 +35,8 @@ describe('<Message>', () => {
     fireEvent.click(screen.getByTestId('send-button'))
     expect(dispatch).toHaveBeenCalledTimes(1)
     expect(dispatch).toHaveBeenCalledWith({type: SET_CHAT_MESSAGE, payload: 'Hello world'})
+
+    const messageMeta = screen.queryByText('No messages yet')
+    expect(messageMeta).toBeInTheDocument()
   })
 })

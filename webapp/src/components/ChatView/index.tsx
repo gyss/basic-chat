@@ -7,8 +7,8 @@ import {IMessage} from '../../types'
 import {SET_CHAT_MESSAGE, ADD_CHAT_MESSAGE} from '../../store/actionTypes'
 import Context from '../../store/Context'
 import chatSocket from '../../network/chatSocket'
-import Message from './Message'
 import Button from '../../controls/Button'
+import MessagesList from './MessagesList'
 import InputText from '../../controls/InputText'
 import sendIcon from '../../../assets/icons/send.svg'
 import {maxWidth700} from '../../styles'
@@ -16,10 +16,6 @@ import {maxWidth700} from '../../styles'
 const container = css`
   overflow-y: auto;
   flex: 1;
-`
-const messagesBox = css`
-  padding: 1rem;
-  ${maxWidth700}
 `
 
 const footer = css`
@@ -78,22 +74,7 @@ export default function ChatView() {
   return (
     <React.Fragment>
       <div css={container}>
-        <div css={messagesBox}>
-          {!chatView.messages.length ? (
-            <div>
-              <i>No messages yet</i>
-            </div>
-          ) : (
-            chatView.messages.map((message) => (
-              <Message
-                key={message.id}
-                message={message}
-                isOwnedByUser={message.user.id === user.id}
-                hourFormat={settings.hourFormat}
-              />
-            ))
-          )}
-        </div>
+        <MessagesList messages={chatView.messages} userId={user.id} hourFormat={settings.hourFormat} />
       </div>
       <div css={footer}>
         <InputText
