@@ -29,19 +29,15 @@ The project requires to setup environment variables. Copy `webapp/.env.template`
 
 ## Commands
 
-Run server
+### Client
 
-```
-$ cd server/
-$ npm start
-```
+- `$ npm start`: Run development server
+- `$ npm run build`: Build static assets
+- `$ npm test`: Execute test runner
 
-Run client
+### Server
 
-```
-$ cd webapp/
-$ npm start
-```
+- `$ npm start`: Run server
 
 ## Features
 
