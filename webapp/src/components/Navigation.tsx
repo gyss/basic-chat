@@ -42,9 +42,16 @@ interface StyledNavLinkProps {
 const StyledNavLink = styled(NavLink)`
   position: relative;
 
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+
   ${(props: StyledNavLinkProps) =>
     props.badge > 0 &&
     `
+    animation: blink 2s linear infinite;
     &::after {
       content: '${props.badge}';
       position: absolute;
