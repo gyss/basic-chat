@@ -7,7 +7,7 @@ import styled from '@emotion/styled'
 
 import {IMessage} from '../../types'
 
-interface IProps {
+export interface IProps {
   message: IMessage
   hourFormat?: '24' | '12'
   isOwnedByUser?: boolean

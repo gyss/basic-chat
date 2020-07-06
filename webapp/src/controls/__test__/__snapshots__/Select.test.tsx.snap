@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Select> should render 1`] = `
+<DocumentFragment>
+  <select
+    class="css-uzlkwv-Select"
+  >
+    <option
+      value="0"
+    >
+      zero
+    </option>
+    <option
+      value="1"
+    >
+      one
+    </option>
+  </select>
+</DocumentFragment>
+`;

@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Message> should render 1`] = `
+<DocumentFragment>
+  <div
+    class="css-at14q"
+  >
+    <div>
+      Pepe, 01:07 pm
+    </div>
+    <div
+      class="css-6gx0yb"
+    >
+      Hello World!
+    </div>
+  </div>
+</DocumentFragment>
+`;

@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<InputText> should render 1`] = `
+<DocumentFragment>
+  <input
+    class="css-jkzcq5-InputText"
+    name="username"
+    type="text"
+  />
+</DocumentFragment>
+`;
