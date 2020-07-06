@@ -103,7 +103,7 @@ export default function ChatView() {
           onKeyDown={handleKeyDownMessage}
           onChange={handleChangeMessage}
         />
-        <Button onClick={handleSendMessage} noPadding>
+        <Button onClick={handleSendMessage} noPadding data-testid="send-button">
           <img src={sendIcon} css={iconStyles} />
         </Button>
       </div>

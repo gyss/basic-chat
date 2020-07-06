@@ -49,7 +49,7 @@ The project requires to setup environment variables. Copy `webapp/.env.template`
 - [x] Send messages on CTRL+ENTER
 - [x] Reset to defaults
 - [x] Local Storage
-- [x] Unit testing
+- [x] Unit testing (Jest + React Testing Library)
 - [x] Basic responsive design
 - [x] Blink chat tab when unread messages
 - [x] Typescript
