@@ -48,7 +48,7 @@ export default function Message({message, isOwnedByUser, hourFormat}: IProps) {
     <Container isOwnedByUser={isOwnedByUser}>
       <div>
         {!isOwnedByUser && message.user.username + ', '}
-        {moment(message.timestamp).format(hourFormat === '24' ? 'HH:mm' : 'hh:mm a')}
+        {moment.utc(message.timestamp).format(hourFormat === '24' ? 'HH:mm' : 'hh:mm a')}
       </div>
       <Bubble isOwnedByUser={isOwnedByUser}>{message.text}</Bubble>
     </Container>

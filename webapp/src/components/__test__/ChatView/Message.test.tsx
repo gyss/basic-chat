@@ -17,7 +17,7 @@ describe('<Message>', () => {
           id: '1',
           username: 'Pepe',
         },
-        timestamp: 1594037255632,
+        timestamp: 1594040855632,
         text: 'Hello World!',
       },
     }
