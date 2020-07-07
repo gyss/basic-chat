@@ -1,8 +1,8 @@
 language: node_js
 
 before_install:
+  - cd webapp
   - npm i -g npm@6.14.5
 
 script:
-  - cd project
   - npm test
