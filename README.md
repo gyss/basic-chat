@@ -69,5 +69,5 @@ The project requires to setup environment variables. Copy `webapp/.env.template`
 - [ ] When user changes username, send the name to other clients in a new chat channel
 - [ ] When user connects to the chat, send the notification to the other clients
 - [ ] Store in memory last 20 messages sent to the server, so when a new user connects, he/she can read part of the chat history
-- [ ] Setup Travis CI to run all tests on every commit
+- [x] Setup Travis CI to run all tests on every commit
 - [ ] Work on Ally
