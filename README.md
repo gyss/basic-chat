@@ -1,7 +1,7 @@
-# Basic Chat
+# Basic Chat [![Build Status](https://travis-ci.com/gyss/basic-chat.svg?branch=master)](https://travis-ci.com/gyss/basic-chat.svg?branch=master)
 
 <img src="./webapp/assets/logo.png" alt="Kitten"
-	title="A cute kitten" width="50" height="50" />
+	title="A cute kitten" width="50" height="50" style="float: left; padding-right: 10px" />
 
 Basic chat developed with React/Typescript for the SPA and NodeJs for the back-end. Using WebSockets (Socket.io) to connect the webapps to the server.
 
