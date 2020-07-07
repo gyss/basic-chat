@@ -15,4 +15,4 @@ deploy:
   keep_history: true
   local_dir: webapp/dist/
   on:
-    branch: ci
+    branch: master
