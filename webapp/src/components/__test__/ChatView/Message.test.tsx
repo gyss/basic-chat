@@ -4,6 +4,10 @@ import * as React from 'react'
 import {render, screen} from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 
+jest.mock('../../../network/chatSocket', () => ({
+  sendMessage: jest.fn(),
+}))
+
 import Message, {IProps} from '../../ChatView/Message'
 
 describe('<Message>', () => {

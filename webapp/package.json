@@ -6,7 +6,8 @@
   "scripts": {
     "start": "webpack-dev-server --open --mode development --host 0.0.0.0",
     "build": "webpack --mode production",
-    "test": "jest --watchAll"
+    "test": "jest",
+    "test:w": "jest --watchAll"
   },
   "author": "J. Llad",
   "license": "ISC",
@@ -51,7 +52,8 @@
     "moment": "^2.27.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "socket.io-client": "^2.3.0"
   },
   "jest": {
     "moduleFileExtensions": [
