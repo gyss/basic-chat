@@ -5,7 +5,7 @@ import {css, jsx} from '@emotion/core'
 
 import {IMessage} from '../../types'
 import {maxWidth700} from '../../styles'
-const Message = React.lazy(() => import('./Message'))
+import Message from './Message'
 
 const messagesBox = css`
   padding: 1rem;
@@ -21,22 +21,20 @@ export interface IProps {
 export default function MessagesList({messages, userId, hourFormat}: IProps) {
   return (
     <div css={messagesBox}>
-      <React.Suspense fallback={<div>Loading...</div>}>
-        {!messages.length ? (
-          <div>
-            <i>No messages yet</i>
-          </div>
-        ) : (
-          messages.map((message) => (
-            <Message
-              key={message.id}
-              message={message}
-              isOwnedByUser={message.user.id === userId}
-              hourFormat={hourFormat}
-            />
-          ))
-        )}
-      </React.Suspense>
+      {!messages.length ? (
+        <div>
+          <i>No messages yet</i>
+        </div>
+      ) : (
+        messages.map((message) => (
+          <Message
+            key={message.id}
+            message={message}
+            isOwnedByUser={message.user.id === userId}
+            hourFormat={hourFormat}
+          />
+        ))
+      )}
     </div>
   )
 }
