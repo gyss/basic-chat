@@ -76,8 +76,8 @@ export default function App() {
           return null
         }}
       </Context.Consumer>
-      <React.Suspense fallback={<div>Loading...</div>}>
-        <ErrorBoundary>
+      <ErrorBoundary>
+        <React.Suspense fallback={<div>Loading...</div>}>
           <Global styles={globalStyles} />
           <Global styles={globalState.settings.theme === 'light' ? themeLight : themeDark} />
           <Router>
@@ -93,8 +93,8 @@ export default function App() {
               </Switch>
             </AppWrapper>
           </Router>
-        </ErrorBoundary>
-      </React.Suspense>
+        </React.Suspense>
+      </ErrorBoundary>
     </Context.Provider>
   )
 }
