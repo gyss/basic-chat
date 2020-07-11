@@ -80,7 +80,7 @@ export default function App() {
         <React.Suspense fallback={<div>Loading...</div>}>
           <Global styles={globalStyles} />
           <Global styles={globalState.settings.theme === 'light' ? themeLight : themeDark} />
-          <Router>
+          <Router basename={process.env.ROUTER_BASENAME}>
             <AppWrapper>
               <Navigation />
               <Switch>

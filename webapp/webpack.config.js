@@ -41,7 +41,7 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new webpack.EnvironmentPlugin(['CHAT_SERVER_BASE_URL']),
+    new webpack.EnvironmentPlugin(['CHAT_SERVER_BASE_URL', 'ROUTER_BASENAME']),
     new HtmlWebpackPlugin({
       template: './src/index.template.html',
       minify: {
