@@ -9,7 +9,7 @@ import Context from '../../../store/Context'
 import {initialState} from '../../../store/reducer'
 import {SET_CHAT_MESSAGE} from '../../../store/actionTypes'
 
-describe('<Message>', () => {
+describe('<ChatView>', () => {
   test('should call dispatch when user clicks on send button', () => {
     const dispatch = jest.fn()
     render(
