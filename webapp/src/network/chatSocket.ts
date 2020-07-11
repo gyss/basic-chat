@@ -1,5 +1,3 @@
-import * as io from 'socket.io-client'
-
 import {IMessage} from '../types'
 import {ADD_CHAT_MESSAGE, ADD_UNREAD_MESSAGE} from '../store/actionTypes'
 import {getContext} from '../store/exposedContext'
@@ -10,13 +8,17 @@ class Socket {
   connected: boolean
   socket: SocketIOClient.Socket
 
-  connect(url: string) {
-    this.url = url
+  async connect(url: string) {
+    const io = await import(
+      /* webpackMode: "lazy", webpackChunkName: "socket.io-client" */
+      'socket.io-client'
+    )
     const socket = io(url)
     socket.on('connect', this.onConnect)
     socket.on(CHAT_CHANNEL, this.onChatEvent)
     socket.on('disconnect', this.onDisconnect)
     this.socket = socket
+    this.url = url
   }
 
   onConnect() {
