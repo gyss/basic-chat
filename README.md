@@ -5,6 +5,8 @@
 
 Basic chat developed with React/Typescript for the SPA and NodeJs for the back-end. Using WebSockets (Socket.io) to connect the webapps to the server.
 
+See example [here](https://gyss.github.io/basic-chat/) (only UI, still requires a server deployment to enable chat)
+
 ## Installation
 
 Install server dependencies
