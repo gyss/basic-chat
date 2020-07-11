@@ -10,7 +10,7 @@ import appReducer, {initialState} from './store/reducer'
 import Context from './store/Context'
 import expose from './store/exposedContext'
 
-const ErrorBoundary = React.lazy(() => import('./components/ErrorBoundary'))
+import ErrorBoundary from './components/ErrorBoundary'
 const ChatView = React.lazy(() => import('./components/ChatView'))
 const SettingsView = React.lazy(() => import('./components/SettingsView'))
 const Navigation = React.lazy(() => import('./components/Navigation'))
