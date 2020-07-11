@@ -5,7 +5,7 @@ import {css, jsx} from '@emotion/core'
 import styled from '@emotion/styled'
 import {NavLink, useLocation} from 'react-router-dom'
 
-import {CLEAR_UNREAD_MESSAGES} from '../store/actionTypes'
+import {SET_ROUTE, CLEAR_UNREAD_MESSAGES} from '../store/actionTypes'
 import Context from '../store/Context'
 import {maxWidth700} from '../styles'
 
@@ -82,6 +82,7 @@ export default function Navigation() {
 
   let location = useLocation()
   React.useEffect(() => {
+    dispatch({type: SET_ROUTE, payload: location})
     if (location.pathname === '/') {
       dispatch({type: CLEAR_UNREAD_MESSAGES})
     }

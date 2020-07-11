@@ -1,4 +1,5 @@
 export interface IState {
+  route: string
   user: IUser
   settings: ISettings
   chatView: {

@@ -1,5 +1,6 @@
 import {IState, IAction, IMessage} from '../types'
 import {
+  SET_ROUTE,
   SETTINGS_RESET,
   SET_SETTINGS_HOURFORMAT,
   SET_SETTINGS_LANGUAGE,
@@ -17,6 +18,7 @@ import User from '../models/User'
 import Settings from '../models/Settings'
 
 export const initialState: IState = {
+  route: '/',
   user: User.load(),
   settings: Settings.load(),
   chatView: {
@@ -30,6 +32,11 @@ export const initialState: IState = {
 
 export default function appReducer(state: IState, action: IAction) {
   switch (action.type) {
+    case SET_ROUTE:
+      return {
+        ...state,
+        route: action.payload,
+      }
     case SETTINGS_RESET:
       return {
         ...state,

@@ -26,13 +26,13 @@ class Socket {
   onChatEvent(message: IMessage) {
     const {
       dispatch,
-      globalState: {user},
+      globalState: {user, route},
     } = getContext()
 
     if (user.id !== message.user.id) {
       dispatch({type: ADD_CHAT_MESSAGE, payload: message})
 
-      if (location.pathname !== '/') {
+      if (route !== '/') {
         dispatch({type: ADD_UNREAD_MESSAGE})
       }
     }
