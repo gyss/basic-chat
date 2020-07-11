@@ -6,6 +6,7 @@ const path = require('path')
 const webpack = require('webpack')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const WebpackPwaManifest = require('webpack-pwa-manifest')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   mode: 'development',
@@ -28,10 +29,26 @@ module.exports = {
   },
   optimization: {
     usedExports: true, // Tree shaking
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all',
+        },
+      },
+    },
   },
   plugins: [
     new CleanWebpackPlugin(),
     new webpack.EnvironmentPlugin(['CHAT_SERVER_BASE_URL']),
+    new HtmlWebpackPlugin({
+      template: './src/index.template.html',
+      minify: {
+        collapseWhitespace: true,
+        removeComments: true,
+      },
+    }),
     new WebpackPwaManifest({
       name: 'Chat App',
       short_name: 'ChatApp',

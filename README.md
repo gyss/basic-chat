@@ -71,3 +71,4 @@ The project requires to setup environment variables. Copy `webapp/.env.template`
 - [ ] Store in memory last 20 messages sent to the server, so when a new user connects, he/she can read part of the chat history
 - [x] Setup Travis CI to run all tests on every commit
 - [ ] Work on Ally
+- [x] Code splitting
