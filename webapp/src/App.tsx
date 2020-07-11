@@ -9,10 +9,11 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import appReducer, {initialState} from './store/reducer'
 import Context from './store/Context'
 import expose from './store/exposedContext'
-import ErrorBoundary from './components/ErrorBoundary'
-import ChatView from './components/ChatView'
-import SettingsView from './components/SettingsView'
-import Navigation from './components/Navigation'
+
+const ErrorBoundary = React.lazy(() => import('./components/ErrorBoundary'))
+const ChatView = React.lazy(() => import('./components/ChatView'))
+const SettingsView = React.lazy(() => import('./components/SettingsView'))
+const Navigation = React.lazy(() => import('./components/Navigation'))
 
 const globalStyles = css`
   html,
@@ -75,23 +76,25 @@ export default function App() {
           return null
         }}
       </Context.Consumer>
-      <ErrorBoundary>
-        <Global styles={globalStyles} />
-        <Global styles={globalState.settings.theme === 'light' ? themeLight : themeDark} />
-        <Router>
-          <AppWrapper>
-            <Navigation />
-            <Switch>
-              <Route exact path="/settings">
-                <SettingsView />
-              </Route>
-              <Route path="/">
-                <ChatView />
-              </Route>
-            </Switch>
-          </AppWrapper>
-        </Router>
-      </ErrorBoundary>
+      <React.Suspense fallback={<div>Loading...</div>}>
+        <ErrorBoundary>
+          <Global styles={globalStyles} />
+          <Global styles={globalState.settings.theme === 'light' ? themeLight : themeDark} />
+          <Router>
+            <AppWrapper>
+              <Navigation />
+              <Switch>
+                <Route exact path="/settings">
+                  <SettingsView />
+                </Route>
+                <Route path="/">
+                  <ChatView />
+                </Route>
+              </Switch>
+            </AppWrapper>
+          </Router>
+        </ErrorBoundary>
+      </React.Suspense>
     </Context.Provider>
   )
 }
