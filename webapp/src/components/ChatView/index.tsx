@@ -83,9 +83,10 @@ export default function ChatView() {
           value={chatView.message}
           onKeyDown={handleKeyDownMessage}
           onChange={handleChangeMessage}
+          aria-label="Enter message"
         />
         <Button onClick={handleSendMessage} noPadding data-testid="send-button">
-          <img src={sendIcon} css={iconStyles} />
+          <img src={sendIcon} css={iconStyles} alt="Send" />
         </Button>
       </div>
     </React.Fragment>
