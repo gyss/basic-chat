@@ -7,7 +7,8 @@
     "start": "webpack-dev-server --open --mode development --host 0.0.0.0",
     "build": "webpack --mode production",
     "test": "jest",
-    "test:w": "jest --watchAll"
+    "test:w": "jest --watchAll",
+    "cypress:open": "cypress open"
   },
   "author": "J. Llad",
   "license": "ISC",
@@ -29,6 +30,7 @@
     "babel-loader": "^8.1.0",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.6.0",
+    "cypress": "^4.10.0",
     "dotenv": "^8.2.0",
     "file-loader": "^6.0.0",
     "html-webpack-plugin": "^4.3.0",
