@@ -23,8 +23,6 @@ before_install:
 script:
   - npm run build
   - npm test
-  #  - npm run start:ci &
-  #  - npm run cy:run -- --record --parallel
   - $(npm bin)/cypress run --record --key $CYPRESS_KEY
 
 deploy:

@@ -4,6 +4,4 @@ node_modules
 webapp/dist
 jest
 
-webapp/cypress/integration/examples
-
 .env
