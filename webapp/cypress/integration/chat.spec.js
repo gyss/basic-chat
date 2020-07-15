@@ -8,7 +8,7 @@ describe('Chat View', () => {
     cy.get('input').should('have.value', '')
   })
 
-  it('Does enables ctrl+enter option in Settings and writes a message with ctrl+enter', () => {
+  it('Does enables ctrl+enter option in Settings, writes a message and sends it', () => {
     cy.visit('https://gyss.github.io/basic-chat/')
 
     cy.get('[href="/basic-chat/settings"]').click()
