@@ -24,6 +24,9 @@ script:
   - npm run build
   - npm test
   - $(npm bin)/cypress run --record --key $CYPRESS_KEY
+  # after all tests finish running we need
+  # to kill all background jobs (like "npm start &")
+  - kill $(jobs -p) || true
 
 deploy:
   provider: pages
