@@ -74,3 +74,4 @@ The project requires to setup environment variables. Copy `webapp/.env.template`
 - [x] Setup Travis CI to run all tests on every commit
 - [ ] Work on Ally
 - [x] Code splitting
+- [x] End to end testing with Cypress
