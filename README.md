@@ -1,4 +1,4 @@
-# Basic Chat [![Build Status](https://travis-ci.com/gyss/basic-chat.svg?branch=master)](https://travis-ci.com/gyss/basic-chat.svg?branch=master)
+# Basic Chat [![Build Status](https://travis-ci.com/gyss/basic-chat.svg?branch=master)](https://travis-ci.com/gyss/basic-chat.svg?branch=master) [![Cypress.io tests](https://img.shields.io/badge/cypress.io-tests-green.svg?style=flat-square)](https://dashboard.cypress.io/#/projects/99s4sa/runs)
 
 <img src="./webapp/assets/logo.png" alt="Kitten"
 	title="A cute kitten" width="50" height="50" style="float: left; padding-right: 10px" />
@@ -74,3 +74,4 @@ The project requires to setup environment variables. Copy `webapp/.env.template`
 - [x] Setup Travis CI to run all tests on every commit
 - [ ] Work on Ally
 - [x] Code splitting
+- [x] End to end testing with Cypress
